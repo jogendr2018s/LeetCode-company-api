@@ -22,6 +22,19 @@ app.get('/', function(req, res){
         res.json(ans)
     });
 })
+app.get('/count',(req,res)=>{
+    fs.readFile(__dirname + "/" + "csvjson (1).json", 'utf8', function(err, data){
+        const jsonData = JSON.parse(data);
+        var count ={};
+        jsonData.forEach(element => {
+            if(count[element.problem_name])count[element.problem_name]+= element.num_occur
+            else count[element.problem_name]= element.num_occur
+        });
+        
+        res.json(count)
+    });
+
+})
 const PORT = process.env.PORT || 8080
 // Create a server to listen at port 8080
 app.listen(PORT, function(){
