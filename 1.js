@@ -1,5 +1,6 @@
 
 //REST API demo in Node.js
+require("dotenv").config()
 var express = require('express'); // requre the express framework
 var app = express();
 var fs = require('fs'); //require file system object
@@ -10,8 +11,6 @@ app.use(express.json());
 app.get('/', function(req, res){
     fs.readFile(__dirname + "/" + "csvjson (1).json", 'utf8', function(err, data){
         const jsonData = JSON.parse(data);
-        console.log(req.query.link)
-        
         var companies =jsonData.filter(element => {
            return  element.problem_link == req.query.link
         });
@@ -21,10 +20,8 @@ app.get('/', function(req, res){
         res.json(ans)
     });
 })
-
+const PORT = process.env.PORT || 8080
 // Create a server to listen at port 8080
-var server = app.listen(8080, function(){
-    var host = server.address().address
-    var port = server.address().port
-    console.log("REST API demo app listening at http://%s:%s", host, port)
+app.listen(PORT, function(){
+    console.log("server running....")
 })
