@@ -4,7 +4,7 @@
   "description": "",
   "main": "1.js",
   "engines": {
-    "node": "20.x"
+    "node": "18.x"
   },
   "scripts": {
     "start": "node 1.js",
