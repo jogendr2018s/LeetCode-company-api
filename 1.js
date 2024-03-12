@@ -7,7 +7,7 @@ var fs = require('fs'); //require file system object
 
 app.use(express.json());
 // Endpoint to Get a list of users
-app.get('/getUsers', function(req, res){
+app.get('/', function(req, res){
     fs.readFile(__dirname + "/" + "csvjson (1).json", 'utf8', function(err, data){
         const jsonData = JSON.parse(data);
         console.log(req.query.link)
