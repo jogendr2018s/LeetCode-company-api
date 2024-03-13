@@ -17,9 +17,7 @@ app.get('/', function(req, res){
            if(req.query.link)return req.query.link.includes(element.problem_link)
            return false
         });
-        console.log(companies)
         var ans = companies.map(element => element.company_name)
-        console.log(ans)
         res.json(ans)
     });
 })
