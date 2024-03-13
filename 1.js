@@ -14,7 +14,8 @@ app.get('/', function(req, res){
     fs.readFile(__dirname + "/" + "csvjson (1).json", 'utf8', function(err, data){
         const jsonData = JSON.parse(data);
         var companies =jsonData.filter(element => {
-           return   req.query.link.includes(element.problem_link)
+           if(req.query.link)return req.query.link.includes(element.problem_link)
+           return false
         });
         console.log(companies)
         var ans = companies.map(element => element.company_name)
